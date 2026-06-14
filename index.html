@@ -45,6 +45,10 @@
         .section-sub,
         .callout p,
         .faq-answer-inner p { text-wrap: pretty; }
+        /* Table cells: keep Service labels on one line; tidy description wrapping */
+        .data-table td { text-wrap: pretty; }
+        .data-table--benefits th:first-child,
+        .data-table--benefits td:first-child { white-space: nowrap; }
 
         /* Benefits table — set the Service column apart (reversed-out band) */
         .data-table--benefits th:first-child,
