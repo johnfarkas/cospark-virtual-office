@@ -27,13 +27,24 @@
             transform-origin: 82% 45%;
         }
 
-        /* Trim the gap above the Boost section (~half the default section padding) */
-        #boost { padding-top: clamp(1.5rem, 3vw, 2.5rem); }
-
-        /* Reduce the pad above these sections by ~a third */
-        #compare { padding-top: clamp(2rem, 4vw, 3.3rem); }
+        /* Tighten vertical rhythm — reduce a section's top pad AND the bottom pad
+           of the section above it, so the combined gap shrinks. */
+        #boost { padding-top: clamp(1.5rem, 3vw, 2.5rem); padding-bottom: clamp(1.5rem, 3vw, 2.5rem); }
+        #compare { padding-top: clamp(2rem, 4vw, 3.3rem); padding-bottom: clamp(1.5rem, 3vw, 2.5rem); }
         #points { padding-top: clamp(2rem, 4vw, 3.3rem); }
-        #faq { padding-top: clamp(2.6rem, 5.3vw, 4.6rem); }
+        #faq { padding-top: clamp(2rem, 4vw, 3.5rem); }
+        .vo-cta { padding-bottom: clamp(2.5rem, 5vw, 4.5rem); }
+
+        /* Prevent single-word orphans / ragged lines at max width */
+        .editorial-hero__title,
+        .editorial-hero__subtitle,
+        .article-narrative h2,
+        .article-narrative h3,
+        .section-headline { text-wrap: balance; }
+        .article-narrative p,
+        .section-sub,
+        .callout p,
+        .faq-answer-inner p { text-wrap: pretty; }
 
         /* Benefits table — set the Service column apart (reversed-out band) */
         .data-table--benefits th:first-child,
@@ -348,7 +359,7 @@
             </div>
 
             <div class="article-narrative">
-                <h3 class="reveal">Good to Know</h3>
+                <h3 class="reveal">A note on terms</h3>
                 <p class="reveal">Your license auto-renews for successive 12-month terms unless either party gives 30 days' written notice before the current term ends. The full terms appear in the Virtual Office Commercial License Agreement, and the team will walk through them with you before you sign.</p>
                 <div class="callout reveal">
                     <p>Questions? Reach out to <a href="mailto:Mackenzie@cospark.us" style="color:var(--copper);font-weight:var(--weight-semibold);">Mackenzie@cospark.us</a> or visit CoSpark Center, 102 S. Weber St., Colorado Springs.</p>
