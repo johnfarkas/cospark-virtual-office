@@ -1,0 +1,804 @@
+/* ══════════════════════════════════════════════
+   CoSpark Pathways — Editorial Components
+   Used by pathway article pages in /website/pathways/
+   Tokens come from brand.css
+   Shared site components (nav, footer, buttons, tiles,
+   FAQ, process panels, color-flow) come from website.css
+   ══════════════════════════════════════════════ */
+
+/* ══════════════════════════════════════════════
+   FAQ Overrides (pathway pages)
+   ══════════════════════════════════════════════ */
+.faq .section-headline,
+#faq .section-headline {
+    text-align: center;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+/* ══════════════════════════════════════════════
+   Editorial Hero
+   ══════════════════════════════════════════════ */
+.editorial-hero {
+    position: relative;
+    padding: clamp(5rem, 10vw, 8rem) 0 clamp(3rem, 6vw, 5rem);
+    background: var(--slate-50) !important;
+    overflow: hidden;
+}
+.editorial-hero__inner {
+    max-width: 800px;
+}
+/* Pathway icon — placeholder spark, replace per-pathway when icons are ready.
+   Icons use two-color system: white (#FFF) strokes + copper (#D4792F) accents.
+   Viewboxes ~30-44px in the icon system, displayed at 56px here. */
+.editorial-hero__icon {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 1.5rem;
+    color: var(--copper);
+    flex-shrink: 0;
+}
+.editorial-hero__icon svg {
+    width: 100%;
+    height: 100%;
+}
+.editorial-hero__title {
+    font-family: var(--font-sans);
+    font-size: var(--text-display);
+    font-weight: var(--weight-black);
+    line-height: var(--leading-display);
+    letter-spacing: var(--tracking-display);
+    color: var(--color-heading);
+    margin-bottom: 1.25rem;
+}
+.editorial-hero__subtitle {
+    font-family: var(--font-serif);
+    font-size: var(--text-subtitle);
+    font-weight: var(--weight-regular);
+    line-height: var(--leading-subtitle);
+    color: var(--slate-500);
+    max-width: 640px;
+}
+.editorial-hero__meta {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+/* Decorative tile accents */
+.editorial-hero__accent {
+    position: absolute;
+    z-index: 1;
+}
+.editorial-hero__accent--1 {
+    width: clamp(36px, 4.5vw, 56px);
+    top: 15%;
+    right: 8%;
+}
+.editorial-hero__accent--2 {
+    width: clamp(28px, 3.5vw, 44px);
+    top: 55%;
+    right: 4%;
+}
+.editorial-hero__accent--3 {
+    width: clamp(24px, 3vw, 36px);
+    bottom: 12%;
+    right: 14%;
+}
+@media (max-width: 900px) {
+    .editorial-hero__accent { display: none; }
+}
+
+/* Hero with photo — two-column layout */
+.editorial-hero--photo .editorial-hero__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 4vw, 4rem);
+    align-items: center;
+}
+.editorial-hero__photo-wrap {
+    position: relative;
+}
+.editorial-hero__photo {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    z-index: 1;
+}
+.editorial-hero__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Floating CoSpark shapes around hero photo */
+.editorial-hero__shape {
+    position: absolute;
+    z-index: 0;
+}
+.editorial-hero__shape--1 {
+    width: clamp(40px, 5vw, 64px);
+    top: -8%;
+    right: -5%;
+    z-index: 2;
+}
+.editorial-hero__shape--2 {
+    width: clamp(28px, 3.5vw, 48px);
+    bottom: -6%;
+    left: -4%;
+    z-index: 2;
+}
+.editorial-hero__shape--3 {
+    width: clamp(24px, 3vw, 40px);
+    top: 20%;
+    left: -6%;
+    z-index: 0;
+}
+
+@media (max-width: 900px) {
+    .editorial-hero--photo .editorial-hero__grid {
+        grid-template-columns: 1fr;
+        align-items: start;
+    }
+    .editorial-hero--photo .editorial-hero__inner {
+        padding-bottom: 0;
+    }
+    .editorial-hero__photo-wrap {
+        max-width: 480px;
+        margin: 0 auto;
+    }
+    .editorial-hero__shape { display: none; }
+}
+
+/* ══════════════════════════════════════════════
+   Content Images
+   ══════════════════════════════════════════════ */
+
+/* Full-width image within article narrative */
+.article-image {
+    max-width: var(--measure-body);
+    margin: clamp(2rem, 4vw, 3rem) auto;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.article-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.article-image figcaption {
+    font-family: var(--font-sans);
+    font-size: var(--text-caption);
+    color: var(--slate-400);
+    margin-top: 0.75rem;
+    text-align: center;
+}
+
+/* Wide image — breaks out of the body measure */
+.article-image--wide {
+    max-width: 960px;
+}
+
+/* Inset image — floated alongside text */
+.article-image--inset {
+    max-width: 320px;
+    float: right;
+    margin: 0.5rem 0 1.5rem clamp(1.5rem, 3vw, 2.5rem);
+    border-radius: 8px;
+}
+@media (max-width: 768px) {
+    .article-image--inset {
+        float: none;
+        max-width: 100%;
+        margin: clamp(1.5rem, 3vw, 2rem) auto;
+    }
+}
+
+/* Image in dark sections */
+.dark-section .article-image figcaption {
+    color: rgba(255,255,255,0.4);
+}
+
+/* Image pair — two images side by side */
+.article-image-pair {
+    max-width: 960px;
+    margin: clamp(2rem, 4vw, 3rem) auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(1rem, 2vw, 1.5rem);
+}
+.article-image-pair .article-image {
+    margin: 0;
+}
+@media (max-width: 640px) {
+    .article-image-pair {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ══════════════════════════════════════════════
+   Reading Time
+   ══════════════════════════════════════════════ */
+.reading-time {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    font-family: var(--font-sans);
+    font-size: var(--text-small);
+    font-weight: var(--weight-medium);
+    color: var(--copper);
+    letter-spacing: 0.01em;
+}
+.reading-time svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+/* ══════════════════════════════════════════════
+   Article Narrative
+   ══════════════════════════════════════════════ */
+.article-narrative {
+    max-width: var(--measure-body);
+    margin: 0 auto;
+}
+.article-narrative p {
+    font-family: var(--font-serif);
+    font-size: 1.0625rem;
+    line-height: var(--leading-body);
+    color: var(--slate-500);
+}
+.article-narrative p + p {
+    margin-top: 1.25rem;
+}
+.article-narrative h2 {
+    font-family: var(--font-sans);
+    font-size: var(--text-h1);
+    font-weight: var(--weight-bold);
+    line-height: var(--leading-h1);
+    letter-spacing: var(--tracking-h1);
+    color: var(--color-heading);
+    margin-top: clamp(3rem, 6vw, 5rem);
+    margin-bottom: 1.25rem;
+}
+.article-narrative h2:first-child {
+    margin-top: 0;
+}
+.article-narrative h3 {
+    font-family: var(--font-sans);
+    font-size: var(--text-h3);
+    font-weight: var(--weight-bold);
+    line-height: var(--leading-h3);
+    color: var(--color-heading);
+    margin-top: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 0.75rem;
+}
+
+/* ── Article section fallback (content not wrapped in .article-narrative) ── */
+.article-section > .container > p {
+    font-family: var(--font-serif);
+    font-size: 1.0625rem;
+    line-height: var(--leading-body);
+    color: var(--slate-500);
+    max-width: var(--measure-body);
+    margin-left: auto;
+    margin-right: auto;
+}
+.article-section > .container > p + p {
+    margin-top: 1.25rem;
+}
+.article-section > .container > h2 {
+    font-family: var(--font-sans);
+    font-size: var(--text-h1);
+    font-weight: var(--weight-bold);
+    line-height: var(--leading-h1);
+    letter-spacing: var(--tracking-h1);
+    color: var(--color-heading);
+    max-width: var(--measure-body);
+    margin: clamp(3rem, 6vw, 5rem) auto 1.25rem;
+}
+.article-section > .container > h3 {
+    font-family: var(--font-sans);
+    font-size: var(--text-h3);
+    font-weight: var(--weight-bold);
+    line-height: var(--leading-h3);
+    color: var(--color-heading);
+    max-width: var(--measure-body);
+    margin: clamp(2rem, 4vw, 3rem) auto 0.75rem;
+}
+
+/* ── Dark context ── */
+.dark-section .article-narrative p {
+    color: rgba(255,255,255,0.7);
+}
+.dark-section .article-narrative h2 {
+    color: #fff;
+}
+.dark-section .article-narrative h3 {
+    color: #fff;
+}
+
+/* ── Color-flow tinted text ── */
+.color-flow [data-flow="copper"] .article-narrative p { color: var(--copper-100); }
+.color-flow [data-flow="patina"] .article-narrative p { color: var(--patina-100); }
+.color-flow [data-flow="ember"] .article-narrative p { color: var(--ember-100); }
+
+/* ══════════════════════════════════════════════
+   Callout Box
+   ══════════════════════════════════════════════ */
+.callout {
+    max-width: var(--measure-body);
+    margin: clamp(1.5rem, 3vw, 2.5rem) auto;
+    padding: clamp(1.25rem, 2.5vw, 1.75rem) clamp(1.5rem, 3vw, 2rem);
+    border-left: 3px solid var(--copper);
+    border-radius: 0 6px 6px 0;
+    background: var(--copper-50);
+}
+.callout p {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    line-height: var(--leading-body);
+    color: var(--slate-600);
+}
+.callout p + p {
+    margin-top: 0.75rem;
+}
+.callout--patina {
+    border-left-color: var(--patina);
+    background: var(--patina-50);
+}
+.callout--ember {
+    border-left-color: var(--ember);
+    background: var(--ember-50);
+}
+
+/* ── Callout in dark context ── */
+.dark-section .callout {
+    background: var(--slate-900);
+    border-left-color: var(--copper);
+}
+.dark-section .callout p {
+    color: rgba(255,255,255,0.7);
+}
+.dark-section .callout--patina {
+    border-left-color: var(--patina);
+}
+.dark-section .callout--ember {
+    border-left-color: var(--ember);
+}
+
+/* ── Color-flow tinted callouts ── */
+.color-flow [data-flow="copper"] .callout {
+    background: rgba(212,121,47,0.08);
+    border-left-color: var(--copper-300);
+}
+.color-flow [data-flow="copper"] .callout p { color: var(--copper-100); }
+
+.color-flow [data-flow="patina"] .callout {
+    background: rgba(0,140,118,0.08);
+    border-left-color: var(--patina-300);
+}
+.color-flow [data-flow="patina"] .callout p { color: var(--patina-100); }
+
+.color-flow [data-flow="ember"] .callout {
+    background: rgba(165,56,62,0.08);
+    border-left-color: var(--ember-300);
+}
+.color-flow [data-flow="ember"] .callout p { color: var(--ember-100); }
+
+/* ══════════════════════════════════════════════
+   Walked Example
+   ══════════════════════════════════════════════ */
+.walked-example {
+    max-width: var(--measure-body);
+    margin: 0 auto;
+}
+/* Light context — warm background zone */
+.walked-example--cream {
+    max-width: none;
+    background: var(--copper-50);
+    padding: clamp(3rem, 6vw, 5rem) 0;
+    margin: clamp(2rem, 4vw, 3rem) 0;
+}
+.walked-example--cream .walked-example__inner {
+    max-width: var(--measure-body);
+    margin: 0 auto;
+    padding: 0 clamp(24px, 4vw, 64px);
+}
+
+/* Walked example typography — applies to both regular and cream variants */
+.walked-example p,
+.walked-example--cream p {
+    font-family: var(--font-serif);
+    font-size: 1.0625rem;
+    line-height: var(--leading-body);
+    color: var(--slate-500);
+}
+.walked-example p + p,
+.walked-example--cream p + p {
+    margin-top: 1.25rem;
+}
+.walked-example h2,
+.walked-example--cream h2 {
+    font-family: var(--font-sans);
+    font-size: var(--text-h2);
+    font-weight: var(--weight-bold);
+    line-height: var(--leading-h2);
+    color: var(--color-heading);
+    margin-top: clamp(3rem, 6vw, 4rem);
+    margin-bottom: 1.25rem;
+}
+.walked-example h2:first-child,
+.walked-example--cream h2:first-child {
+    margin-top: 0;
+}
+.walked-example h3,
+.walked-example--cream h3 {
+    font-family: var(--font-sans);
+    font-size: var(--text-h3);
+    font-weight: var(--weight-bold);
+    line-height: var(--leading-h3);
+    color: var(--color-heading);
+    margin-top: clamp(2rem, 4vw, 2.5rem);
+    margin-bottom: 0.75rem;
+}
+
+/* ══════════════════════════════════════════════
+   Month Markers
+   ══════════════════════════════════════════════ */
+.month-marker {
+    font-family: var(--font-sans);
+    font-size: var(--text-small);
+    font-weight: var(--weight-bold);
+    letter-spacing: 0.02em;
+    color: var(--copper-600);
+    margin-top: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 0.75rem;
+}
+.dark-section .month-marker {
+    color: var(--copper);
+}
+.color-flow [data-flow="copper"] .month-marker { color: var(--copper-200); }
+.color-flow [data-flow="patina"] .month-marker { color: var(--copper-200); }
+.color-flow [data-flow="ember"] .month-marker { color: var(--copper-200); }
+
+/* ══════════════════════════════════════════════
+   Data Tables
+   ══════════════════════════════════════════════ */
+.data-table-wrap {
+    max-width: var(--measure-body);
+    margin: clamp(1.5rem, 3vw, 2.5rem) auto;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+}
+/* Shadow indicator for horizontal overflow */
+@media (max-width: 640px) {
+    .data-table-wrap--overflow {
+        mask-image: linear-gradient(to right, black calc(100% - 32px), transparent);
+        -webkit-mask-image: linear-gradient(to right, black calc(100% - 32px), transparent);
+    }
+}
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-variant-numeric: tabular-nums;
+}
+.data-table th {
+    font-family: var(--font-sans);
+    font-size: var(--text-small);
+    font-weight: var(--weight-semibold);
+    text-align: left;
+    padding: 0.75rem 1rem;
+    white-space: nowrap;
+    color: var(--copper-600);
+    border-bottom: 2px solid var(--slate-200);
+}
+.data-table td {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    line-height: var(--leading-body);
+    padding: 0.75rem 1rem;
+    color: var(--slate-600);
+    border-bottom: 1px solid var(--slate-100);
+}
+.data-table tr:last-child td {
+    border-bottom: none;
+}
+/* Bold/highlight row */
+.data-table tr.highlight td {
+    font-weight: var(--weight-semibold);
+    color: var(--color-heading);
+}
+
+/* ── Dark context tables ── */
+.dark-section .data-table th {
+    color: rgba(255,255,255,0.5);
+    border-bottom-color: rgba(255,255,255,0.12);
+    background: var(--slate-900);
+}
+.dark-section .data-table td {
+    color: rgba(255,255,255,0.7);
+    border-bottom-color: rgba(255,255,255,0.06);
+}
+.dark-section .data-table tr.highlight td {
+    color: #fff;
+    font-weight: var(--weight-semibold);
+}
+
+/* ── Color-flow tinted tables ── */
+.color-flow [data-flow="copper"] .data-table th { background: rgba(107,52,16,0.4); color: var(--copper-200); border-bottom-color: rgba(255,255,255,0.1); }
+.color-flow [data-flow="copper"] .data-table td { color: var(--copper-100); border-bottom-color: rgba(255,255,255,0.06); }
+
+.color-flow [data-flow="patina"] .data-table th { background: rgba(6,60,48,0.4); color: var(--patina-200); border-bottom-color: rgba(255,255,255,0.1); }
+.color-flow [data-flow="patina"] .data-table td { color: var(--patina-100); border-bottom-color: rgba(255,255,255,0.06); }
+
+.color-flow [data-flow="ember"] .data-table th { background: rgba(93,30,30,0.4); color: var(--ember-200); border-bottom-color: rgba(255,255,255,0.1); }
+.color-flow [data-flow="ember"] .data-table td { color: var(--ember-100); border-bottom-color: rgba(255,255,255,0.06); }
+
+/* ══════════════════════════════════════════════
+   Comparison Cards
+   ══════════════════════════════════════════════ */
+.comparison-cards {
+    max-width: 1080px;
+    margin: clamp(2rem, 4vw, 3rem) auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: clamp(1rem, 2vw, 1.5rem);
+}
+.comparison-card {
+    padding: clamp(1.5rem, 3vw, 2rem);
+    border-radius: 8px;
+    border: 1px solid var(--slate-200);
+    background: #fff;
+}
+.comparison-card h3 {
+    font-family: var(--font-sans);
+    font-size: var(--text-h3);
+    font-weight: var(--weight-bold);
+    color: var(--color-heading);
+    margin-bottom: 0.75rem;
+}
+.comparison-card p {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    line-height: var(--leading-body);
+    color: var(--slate-500);
+}
+.comparison-card ul {
+    list-style: none;
+    margin-top: 0.75rem;
+}
+.comparison-card li {
+    font-family: var(--font-serif);
+    font-size: var(--text-small);
+    line-height: var(--leading-body);
+    color: var(--slate-500);
+    padding: 0.35rem 0;
+    border-bottom: 1px solid var(--slate-100);
+}
+.comparison-card li:last-child { border-bottom: none; }
+/* Highlighted card */
+.comparison-card--highlight {
+    border-color: var(--copper);
+    border-width: 2px;
+}
+.comparison-card--highlight h3 {
+    color: var(--copper);
+}
+
+/* ── Dark context comparison cards ── */
+.dark-section .comparison-card {
+    background: var(--slate-900);
+    border-color: rgba(255,255,255,0.08);
+}
+.dark-section .comparison-card h3 { color: #fff; }
+.dark-section .comparison-card p { color: rgba(255,255,255,0.7); }
+.dark-section .comparison-card li {
+    color: rgba(255,255,255,0.6);
+    border-bottom-color: rgba(255,255,255,0.06);
+}
+.dark-section .comparison-card--highlight {
+    border-color: var(--copper);
+}
+.dark-section .comparison-card--highlight h3 { color: var(--copper); }
+
+@media (max-width: 640px) {
+    .comparison-cards { grid-template-columns: 1fr; }
+}
+
+/* ══════════════════════════════════════════════
+   Pull Quote
+   ══════════════════════════════════════════════ */
+.pull-quote {
+    max-width: 720px;
+    margin: clamp(3rem, 6vw, 5rem) auto;
+    text-align: center;
+}
+.pull-quote p {
+    font-family: var(--font-serif);
+    font-size: var(--text-subtitle);
+    font-weight: var(--weight-regular);
+    line-height: var(--leading-subtitle);
+    color: var(--copper);
+    font-style: italic;
+}
+.dark-section .pull-quote p {
+    color: var(--copper-200);
+}
+
+/* ══════════════════════════════════════════════
+   Appendix (Collapsible)
+   ══════════════════════════════════════════════ */
+.appendix-gate {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+    padding: clamp(2rem, 4vw, 3rem) 0;
+}
+.appendix-gate .tile {
+    width: 16px;
+    height: 16px;
+}
+.appendix {
+    max-width: 960px;
+    margin: 0 auto;
+}
+.appendix-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1rem 0;
+    background: none;
+    border: none;
+    border-bottom: 1px solid var(--slate-200);
+    cursor: pointer;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: var(--weight-semibold);
+    color: var(--slate);
+    text-align: left;
+    gap: 1rem;
+}
+.appendix-toggle:hover { color: var(--copper); }
+.appendix-toggle .faq-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+.appendix-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+.appendix-content-inner {
+    padding: 1.5rem 0 2rem;
+}
+.appendix-content-inner p {
+    font-family: var(--font-serif);
+    font-size: var(--text-small);
+    line-height: var(--leading-body);
+    color: var(--slate-500);
+}
+.appendix-content-inner p + p { margin-top: 0.75rem; }
+.appendix-content-inner h3 {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: var(--weight-bold);
+    color: var(--slate);
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+.appendix-content-inner .data-table-wrap {
+    margin: 1rem auto;
+}
+.appendix-content-inner .data-table td,
+.appendix-content-inner .data-table th {
+    font-size: var(--text-small);
+    padding: 0.5rem 0.75rem;
+}
+.appendix.open .appendix-toggle .faq-icon::after {
+    transform: translateX(-50%) rotate(90deg);
+    opacity: 0;
+}
+
+/* ══════════════════════════════════════════════
+   Article CTA
+   ══════════════════════════════════════════════ */
+.article-cta {
+    padding: clamp(4rem, 8vw, 7rem) 0;
+    background: var(--slate-50) !important;
+}
+.article-cta__inner {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto;
+}
+.article-cta__icon {
+    width: 64px;
+    height: auto;
+    margin: 0 auto 1.5rem;
+    color: var(--copper);
+}
+.article-cta__inner .section-headline {
+    margin-bottom: 1rem;
+}
+.article-cta__inner .section-sub {
+    color: var(--slate-600);
+    margin: 0 auto 2rem;
+    max-width: none;
+}
+
+/* ══════════════════════════════════════════════
+   Article Section Spacing
+   ══════════════════════════════════════════════ */
+.article-section {
+    padding: clamp(3rem, 6vw, 5rem) 0;
+}
+/* First section after hero gets no extra top padding */
+.editorial-hero + .article-section,
+.editorial-hero + .color-flow .article-section:first-child {
+    padding-top: clamp(2rem, 4vw, 3rem);
+}
+
+/* ══════════════════════════════════════════════
+   Process Panels — Light Variant
+   ══════════════════════════════════════════════ */
+.process-panels--light .process-panel-node {
+    background: #fff;
+    border-color: var(--copper);
+    color: var(--copper);
+}
+.process-panels--light::before {
+    background: var(--copper-200);
+}
+.process-panels--light .process-panel h3 {
+    color: var(--color-heading);
+}
+.process-panels--light .process-panel p {
+    color: var(--slate-500);
+}
+
+/* ══════════════════════════════════════════════
+   Section Dividers (tile strips between zones)
+   ══════════════════════════════════════════════ */
+.section-divider {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    padding: 1.5rem 0;
+}
+.section-divider .tile {
+    width: 16px;
+    height: 16px;
+}
+
+/* ══════════════════════════════════════════════
+   Template B — Cream Sections
+   ══════════════════════════════════════════════ */
+.section--cream {
+    background: var(--copper-50) !important;
+}
+.section--white {
+    background: #fff !important;
+}
+
+/* Copper rule under editorial hero subtitle */
+.editorial-hero__rule {
+    width: 48px;
+    height: 2px;
+    background: var(--copper);
+    margin-top: 1.5rem;
+}
+
+/* ══════════════════════════════════════════════
+   Responsive
+   ══════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    .editorial-hero {
+        padding: clamp(3rem, 6vw, 5rem) 0 clamp(2rem, 4vw, 3rem);
+    }
+}
